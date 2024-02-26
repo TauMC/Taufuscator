@@ -1,6 +1,7 @@
 package org.taumc.fmldeobfuscator;
 
 import cpw.mods.modlauncher.api.LamdbaExceptionUtils;
+import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileModLocator;
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +29,10 @@ public class RuntimeDeobfLocator extends AbstractJarFileModLocator {
 
     @Override
     public Stream<Path> scanCandidates() {
+        if(FMLLoader.isProduction()) {
+            LOGGER.warn("Taufuscator is useless in production, doing nothing.");
+            return Stream.empty();
+        }
         if(!Files.exists(modsToDeobfFolder)) {
             LamdbaExceptionUtils.uncheck(() -> Files.createDirectory(modsToDeobfFolder));
         }

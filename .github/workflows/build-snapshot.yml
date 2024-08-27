@@ -4,6 +4,10 @@ name: build-snapshot
 
 on: [ push ]
 
+env:
+  USERNAME: ${{ secrets.MAVEN_USERNAME }}
+  PASSWORD: ${{ secrets.MAVEN_SECRET }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +26,7 @@ jobs:
           distribution: 'temurin'
           java-version: 17
       - name: Build artifacts
-        run: ./gradlew build
+        run: ./gradlew build publish -PtaumcRepositoryUsername="$USERNAME" -PtaumcRepositoryPassword="$PASSWORD"
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:

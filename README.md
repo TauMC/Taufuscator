@@ -4,7 +4,7 @@ A simple utility to make running other people's mods in dev easier on Minecraft 
 
 ## Usage
 
-Download the latest version from https://nightly.link/TauMC/Taufuscator/workflows/build-snapshot/main/Taufuscator.zip,
-extract the zip, and place the included JAR in the `mods` folder of your development workspace (usually `run/mods`).
+Download the latest JAR from https://maven.taumc.org/#/releases/org/taumc/taufuscator/1.0-SNAPSHOT
+and place it in the `mods` folder of your development workspace (usually `run/mods`).
 
 You can now place obfuscated mod JAR files in the mods folder as usual, and they will be remapped at launch time.
